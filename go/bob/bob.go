@@ -31,18 +31,21 @@ func isQuestion(str string) bool {
 
 // Hey should have a comment documenting it.
 func Hey(remark string) string {
-	trimmedRemark := strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(remark, "\t", ""), "\n", ""), " ", ""), "\r", "")
+	formattedRemark := strings.ReplaceAll(remark, " ", "")
+	formattedRemark = strings.ReplaceAll(formattedRemark, "\t", "")
+	formattedRemark = strings.ReplaceAll(formattedRemark, "\r", "")
+	formattedRemark = strings.ReplaceAll(formattedRemark, "\n", "")
 
 	switch {
-	case len(trimmedRemark) == 0:
+	case len(formattedRemark) == 0:
 		return "Fine. Be that way!"
-	case hasNoLetters(trimmedRemark) && !isQuestion(trimmedRemark):
+	case hasNoLetters(formattedRemark) && !isQuestion(formattedRemark):
 		return "Whatever."
-	case !hasNoLetters(trimmedRemark) && isUpper(trimmedRemark) && isQuestion(trimmedRemark):
+	case !hasNoLetters(formattedRemark) && isUpper(formattedRemark) && isQuestion(formattedRemark):
 		return "Calm down, I know what I'm doing!"
-	case !hasNoLetters(trimmedRemark) && isUpper(trimmedRemark):
+	case !hasNoLetters(formattedRemark) && isUpper(formattedRemark):
 		return "Whoa, chill out!"
-	case isQuestion(trimmedRemark):
+	case isQuestion(formattedRemark):
 		return "Sure."
 	default:
 		return "Whatever."
