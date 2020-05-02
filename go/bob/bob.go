@@ -31,7 +31,7 @@ func isQuestion(str string) bool {
 
 // Hey should have a comment documenting it.
 func Hey(remark string) string {
-	trimmedRemark := strings.Replace(strings.Replace(strings.Replace(strings.Replace(remark, "\t", "", -1), "\n", "", -1), " ", "", -1), "\r", "", -1)
+	trimmedRemark := strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(remark, "\t", ""), "\n", ""), " ", ""), "\r", "")
 
 	switch {
 	case len(trimmedRemark) == 0:
